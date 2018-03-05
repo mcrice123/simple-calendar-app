@@ -28,6 +28,12 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     const date = new Date();
+    const next_date = date;
+    const next_date_num = date.getDate();
+    next_date.setDate(8);
+    let events = [
+      { date: '2018-03-08', hasEventCircle: { backgroundColor: '#ffffff' } }
+    ];
     return (
       <View style={styles.container}>
         <Image
@@ -47,6 +53,7 @@ export default class App extends Component<Props> {
                 weekStart={0} 
                 showControls={true}
                 customStyle={customStyle}
+                eventDates={events}
               />
             </View>
           {/*<Text style={styles.welcome}>
