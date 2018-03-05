@@ -26,13 +26,22 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  dateString(obj) {
+    const year = obj.getYear() + 1900;
+    const date = obj.getDate();
+    const month = obj.getMonth() + 1;
+
+    return year + '-' + month + '-' + date;
+  }
+
   render() {
     const date = new Date();
-    const next_date = date;
-    const next_date_num = date.getDate();
-    next_date.setDate(8);
     let events = [
-      { date: '2018-03-08', hasEventCircle: { backgroundColor: '#ffffff' } }
+      { date: '2018-03-08', hasEventCircle: { backgroundColor: '#ffffff' } },
+      { date: '2018-03-18', hasEventCircle: { backgroundColor: '#ffffff' } },
+      { date: '2018-03-21', hasEventCircle: { backgroundColor: '#ffffff' } },
+      { date: '2018-03-03', hasEventCircle: { backgroundColor: '#000000' }, hasEventText: { color: '#ffffff' } },
+      { date: '2018-03-12', hasEventCircle: { backgroundColor: '#000000' }, hasEventText: { color: '#ffffff' } },
     ];
     return (
       <View style={styles.container}>
@@ -53,7 +62,7 @@ export default class App extends Component<Props> {
                 weekStart={0} 
                 showControls={true}
                 customStyle={customStyle}
-                eventDates={events}
+                events={events}
               />
             </View>
           {/*<Text style={styles.welcome}>
